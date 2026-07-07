@@ -280,8 +280,16 @@ def discover_skills(verbose: bool = False) -> Result:
         pattern_parts = source["pattern"].split("/")
 
         if len(pattern_parts) == 2:
-            # Simple pattern like */skill.md
-            skill_files = list(source_path.glob(source["pattern"]))
+            # Simple pattern like */skill.md — match the filename case-INSENSITIVELY
+            # so uppercase SKILL.md (the convention in ~/.claude/skills) is found even
+            # on case-sensitive filesystems. pathlib.glob is case-sensitive, so relying
+            # on the filesystem's case-folding silently drops every SKILL.md on Linux/CI,
+            # leaving only lowercase plugin skills in the index.
+            subdir, fname = pattern_parts
+            skill_files = [
+                f for f in source_path.glob(f"{subdir}/*.md")
+                if f.name.lower() == fname.lower()
+            ]
         else:
             # Complex pattern - use recursive glob
             skill_files = list(source_path.glob("**/*.md"))
