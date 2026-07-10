@@ -212,7 +212,7 @@ Any skill this session CREATED or MATERIALLY edited (trigger/description changes
 - Run it on the just-built/edited skill; feed it the trigger phrases a real user would type plus one or two neighbor-skill phrases that should NOT fire it.
 - If the wrong skill fires, or a step is skipped or misread, fix the SKILL.md and re-test until clean. Do not close the work on a failing test.
 - Trivial cosmetic edits (a typo, a one-word description tweak) are exempt; anything touching triggers, routing, or steps is not.
-- `skill-edit` already carries this as its step 7 for contained edits; this is the same gate on the create path.
+- `skill-edit` carries a related step 7, but scoped tighter (a quick subagent test only for boundary/routing edits). This skillforge gate is broader: it applies on the CREATE path and to any material edit (new modes, restructured steps), and names the specific `superpowers:testing-skills-with-subagents` skill rather than the generic pattern.
 
 ---
 
