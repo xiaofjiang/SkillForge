@@ -59,6 +59,16 @@ Phase 1 (deep analysis: 11 thinking lenses, regression questioning, automation a
 
 ---
 
+## Step 0: Change-loop on-ramp (do this FIRST, before Phase 0)
+
+Before creating or materially editing a skill, load `~/.claude/references/Change-Loop.md` and state three things up front (the build-new on-ramp from the global CLAUDE.md, mechanized here so it fires by trigger, not memory):
+
+1. **Expectation**, one sentence: "after this skill exists / this edit lands, X should happen."
+2. **Reversibility plan**: dry-run the edit, archive-not-delete, one atomic commit per change.
+3. **Verification step**: how you will confirm it worked, which for skills is the pre-deploy subagent test below.
+
+Then proceed to triage.
+
 ## Phase 0: Skill Triage
 
 Before creating anything, SkillForge intelligently analyzes your input to determine the best action. This is the used core of the skill — nearly every invocation ends here.
