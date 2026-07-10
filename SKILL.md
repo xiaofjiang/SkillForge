@@ -1,6 +1,6 @@
 ---
 name: skillforge
-description: "Intelligent skill router and creator. Analyzes ANY input to recommend existing skills, improve them, or create new ones. Uses deep iterative analysis with 11 thinking models, regression questioning, evolution lens, and multi-agent synthesis panel. Phase 0 triage ensures you never duplicate existing functionality."
+description: "Intelligent skill router and CREATOR. Analyzes ANY input to recommend an existing skill, route a contained existing-skill edit to skill-edit, or create a new skill (and handle splits/merges). Uses deep iterative analysis with 11 thinking models, regression questioning, evolution lens, and multi-agent synthesis panel. Phase 0 triage ensures you never duplicate existing functionality. NOT for contained edits to an existing skill (use skill-edit)."
 license: MIT
 metadata:
   version: 4.0.0
@@ -97,7 +97,7 @@ python scripts/discover_skills.py
 ### Integration with Phases 1-4
 
 - **USE_EXISTING**: Exits early, no creation needed
-- **IMPROVE_EXISTING**: Loads existing skill → Phase 1 analyzes gaps → Phase 2-4 enhance
+- **IMPROVE_EXISTING**: hand a contained edit to the `skill-edit` skill (its 8-step placement protocol). skillforge stays involved only if the enhancement turns out to need a split, merge, or new sibling skill.
 - **CREATE_NEW**: Full pipeline (Phase 1 → 2 → 3 → 4)
 - **COMPOSE**: Suggests using SkillComposer instead
 - **CLARIFY**: Pauses for user input before proceeding
