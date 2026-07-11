@@ -74,6 +74,7 @@ Then proceed to triage.
 These are non-negotiable and apply to every CREATE_NEW and IMPROVE_EXISTING path. Check them in the Phase-4 panel review, not just at the end.
 
 - **Never embed an integration recipe. Point at the Integration Registry.** If the skill touches ANY external service (TickTick, Notion, Monday, BrightData, Gmail, Dropbox, email, the Photo/Video Bank, the vault-handoff buffer), it must NOT copy the call mechanics (token load, curl/API syntax, MCP-vs-script choice, endpoint, version headers) into the skill. It says "do X per the Integration-Registry [Service] section" and keeps only its own workflow logic (which board/DB/column, when, formatting). The mechanics live in exactly one place: `~/.claude/references/Integration-Registry.md`. If the service has no registry section yet, add the section there first, then point at it. This is the registry-first rule from System-Audit I-10; embedding a recipe is the drift bug the registry exists to kill (one MCP rename used to rot ~12 skills silently).
+- **Lifecycle frontmatter at birth (I-13).** Every new skill gets a `metadata:` block with `status: active` and `review-by: YYYY-MM-DD` (default +6 months; a time-boxed skill gets its real end date). `/system-health` flags overdue ones, so this is the mechanism that keeps the library from accreting dead skills. Scripts you generate get a `# status: active | review-by: YYYY-MM-DD` header line. Full rule + the status vocabulary: infrastructure-guide "Lifecycle fields" section.
 
 ## Phase 0: Skill Triage
 
@@ -160,7 +161,7 @@ Validate before Phase 3: all sections present, every decision has a WHY, timeles
 
 | Check | Requirement |
 |-------|-------------|
-| Frontmatter | Only allowed properties (name, description, license, allowed-tools, metadata) |
+| Frontmatter | Only allowed properties (name, description, license, allowed-tools, metadata); metadata carries `status: active` + `review-by:` (I-13) |
 | Name | Hyphen-case, ≤64 chars |
 | Description | ≤1024 chars, no angle brackets |
 | Triggers | 3-5 distinct, natural language |
@@ -192,7 +193,7 @@ python scripts/package_skill.py ~/.claude/skills/my-skill/ ./dist
 | `description` | Yes | Max 1024 chars, no angle brackets |
 | `license` | No | MIT, Apache-2.0, etc. |
 | `allowed-tools` | No | Restrict tool access |
-| `metadata` | No | Custom fields (version, model, etc.) |
+| `metadata` | Yes (lifecycle) | Custom fields; MUST include `status: active` + `review-by: YYYY-MM-DD` at birth (I-13, flagged by /system-health). Also version, model, etc. |
 
 ## Skill Output Structure
 
