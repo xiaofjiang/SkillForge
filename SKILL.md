@@ -69,6 +69,12 @@ Before creating or materially editing a skill, load `~/.claude/references/Change
 
 Then proceed to triage.
 
+## Standards every skill must meet (enforce at generation)
+
+These are non-negotiable and apply to every CREATE_NEW and IMPROVE_EXISTING path. Check them in the Phase-4 panel review, not just at the end.
+
+- **Never embed an integration recipe. Point at the Integration Registry.** If the skill touches ANY external service (TickTick, Notion, Monday, BrightData, Gmail, Dropbox, email, the Photo/Video Bank, the vault-handoff buffer), it must NOT copy the call mechanics (token load, curl/API syntax, MCP-vs-script choice, endpoint, version headers) into the skill. It says "do X per the Integration-Registry [Service] section" and keeps only its own workflow logic (which board/DB/column, when, formatting). The mechanics live in exactly one place: `~/.claude/references/Integration-Registry.md`. If the service has no registry section yet, add the section there first, then point at it. This is the registry-first rule from System-Audit I-10; embedding a recipe is the drift bug the registry exists to kill (one MCP rename used to rot ~12 skills silently).
+
 ## Phase 0: Skill Triage
 
 Before creating anything, SkillForge intelligently analyzes your input to determine the best action. This is the used core of the skill — nearly every invocation ends here.
