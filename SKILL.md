@@ -214,6 +214,8 @@ Scripts enable a skill to be agentic (autonomous, self-verifying). Categories: v
 
 ## Pre-deploy subagent test (REQUIRED before declaring any skill done)
 
+For a skill whose failure would cost real data or trust (data pipelines, live-write wrappers, verification/gate skills), the subagent test below is the MINIMUM; the full sequence is the `verify-harness` skill's skill-authoring lane (adversarial panel to unanimous, fresh-subagent trigger test with counts, cross-model audit with pre-mortem). vollis-catalog and verify-harness itself were both validated that way.
+
 Any skill this session CREATED or MATERIALLY edited (trigger/description changes, new modes, restructured steps) must be tested with `superpowers:testing-skills-with-subagents` BEFORE it is declared done (audit I-2). This is TDD for skills: a fresh subagent gets realistic trigger phrases and we watch whether the right skill fires and its steps get followed, before the skill goes live. Skills are Xiao's real codebase; the recurring pain classes here (trigger misfires, wrong-pathway defaults surviving an edit) are exactly what a pre-deploy test catches.
 
 - Run it on the just-built/edited skill; feed it the trigger phrases a real user would type plus one or two neighbor-skill phrases that should NOT fire it.
