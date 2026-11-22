@@ -115,7 +115,7 @@ python scripts/discover_skills.py
 ### Integration with Phases 1-4
 
 - **USE_EXISTING**: Exits early, no creation needed
-- **IMPROVE_EXISTING**: hand a contained edit to the `skill-edit` skill (its 9-step protocol, placement and relic sweep included). skillforge stays involved only if the enhancement turns out to need a split, merge, or new sibling skill.
+- **IMPROVE_EXISTING**: hand a contained edit to the `skill-edit` skill (its protocol, placement and relic sweep included). skillforge stays involved only if the enhancement turns out to need a split, merge, or new sibling skill.
 - **CREATE_NEW**: Full pipeline (Phase 1 → 2 → 3 → 4)
 - **COMPOSE**: Suggests using SkillComposer instead
 - **CLARIFY**: Pauses for user input before proceeding
@@ -246,6 +246,8 @@ Any skill this session CREATED or MATERIALLY edited (trigger/description changes
 - [ ] Timelessness score ≥ 7
 - [ ] `python scripts/quick_validate.py` passes
 - [ ] Created/materially-edited skill passed `superpowers:testing-skills-with-subagents` (right skill fires, steps followed)
+- [ ] Second review ran on Sol from the reusable brief, one round plus one confirm, a third only on Xiao's yes (`model-and-subagent-routing` Step 4, "The second reviewer of a skill build is Sol"; card D8, 2026-11-22)
+- [ ] The build report ends with the thread-tree cost line, given at each milestone too (`skill-edit` Step 10, the one owner of that line; card D8, 2026-11-22)
 
 ---
 
