@@ -246,7 +246,7 @@ Any skill this session CREATED or MATERIALLY edited (trigger/description changes
 - [ ] Timelessness score ≥ 7
 - [ ] `python scripts/quick_validate.py` passes
 - [ ] Created/materially-edited skill passed `superpowers:testing-skills-with-subagents` (right skill fires, steps followed)
-- [ ] Second review ran on Sol from the reusable brief, one round plus one confirm, a third only on Xiao's yes (`model-and-subagent-routing` Step 4, "The second reviewer of a build is Sol"; card D8, 2026-11-22)
+- [ ] Second review ran on Sol from the reusable brief, one round plus one confirm, a third only on Xiao's yes (`model-and-subagent-routing` Step 4, "The second reviewer of a skill build is Sol"; card D8, 2026-11-22)
 - [ ] The build report ends with the thread-tree cost line, given at each milestone too (`skill-edit` Step 10, the one owner of that line; card D8, 2026-11-22)
 
 ---
