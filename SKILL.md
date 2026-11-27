@@ -220,7 +220,7 @@ Every NEW skill is substantive per the `verify-harness` size gate and takes its 
 Any skill this session CREATED or MATERIALLY edited (trigger/description changes, new modes, restructured steps) must be tested with `superpowers:testing-skills-with-subagents` BEFORE it is declared done (audit I-2). This is TDD for skills: a fresh subagent gets realistic trigger phrases and we watch whether the right skill fires and its steps get followed, before the skill goes live. Skills are Xiao's real codebase; the recurring pain classes here (trigger misfires, wrong-pathway defaults surviving an edit) are exactly what a pre-deploy test catches.
 
 - Run it on the just-built/edited skill; feed it the trigger phrases a real user would type plus one or two neighbor-skill phrases that should NOT fire it.
-- If the wrong skill fires, or a step is skipped or misread, fix the SKILL.md and re-test until clean. Do not close the work on a failing test.
+- If the wrong skill fires, or a step is skipped or misread, fix the SKILL.md and re-test until clean, inside the round budget with Xiao's yes before a third round (`verify-harness`, "Proportionality"). Do not close the work on a failing test.
 - Trivial cosmetic edits (a typo, a one-word description tweak) are exempt; anything touching triggers, routing, or steps is not.
 - `skill-edit` carries a related step 7, but scoped tighter (a quick subagent test only for boundary/routing edits). This skillforge gate is broader: it applies on the CREATE path and to any material edit (new modes, restructured steps), and names the specific `superpowers:testing-skills-with-subagents` skill rather than the generic pattern.
 
