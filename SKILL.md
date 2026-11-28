@@ -174,7 +174,7 @@ Validate before Phase 3: all sections present, every decision has a WHY, timeles
 
 ### Panel review (Phase 4)
 
-3-4 Opus agents (Design/Architecture, Audience/Usability, Evolution/Timelessness, + Script agent if scripts present) review against distinct criteria; unanimous APPROVED required or it returns to Phase 1 with issues (max 5 iterations, then flag for human review). Full panel definitions, scoring rubrics, and the consensus protocol: `references/synthesis-protocol.md`. Timelessness scoring (1-10, ≥7 required) and anti-obsolescence patterns: `references/evolution-scoring.md`. Architecture pattern selection (single-phase / checklist / generator / multi-phase / multi-agent / orchestrator) and the aspirational config block: `references/architecture-and-config.md`.
+3-4 Opus agents (Design/Architecture, Audience/Usability, Evolution/Timelessness, + Script agent if scripts present) review against distinct criteria; unanimous APPROVED required or it returns to Phase 1 with issues (inside the round budget: a second pass on the fixes, then Xiao's yes before any third, per `verify-harness` "Proportionality"). Full panel definitions, scoring rubrics, and the consensus protocol: `references/synthesis-protocol.md`. Timelessness scoring (1-10, ≥7 required) and anti-obsolescence patterns: `references/evolution-scoring.md`. Architecture pattern selection (single-phase / checklist / generator / multi-phase / multi-agent / orchestrator) and the aspirational config block: `references/architecture-and-config.md`.
 
 ---
 

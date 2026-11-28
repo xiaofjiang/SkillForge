@@ -47,7 +47,7 @@ SKILLCREATOR_CONFIG:
   synthesis:
     panel_size: 3
     require_unanimous: true
-    max_iterations: 5
+    max_iterations: 2   # round budget; a third needs Xiao's yes (verify-harness "Proportionality", 2026-11-27)
     escalate_to_human: true
 
   evolution:
