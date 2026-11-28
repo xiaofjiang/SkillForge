@@ -45,7 +45,7 @@ def validate_skill(skill_path):
         return False, "SKILL.md not found"
 
     # Read and validate frontmatter
-    content = skill_md.read_text()
+    content = skill_md.read_text(encoding='utf-8')
     if not content.startswith('---'):
         return False, "No YAML frontmatter found"
 
@@ -71,6 +71,19 @@ def validate_skill(skill_path):
             if ':' in line and not line.startswith(' '):
                 key, value = line.split(':', 1)
                 frontmatter[key.strip()] = value.strip()
+        # Fold YAML block scalars (>, |, with optional chomping) into one line
+        lines = frontmatter_text.split('\n')
+        for i, line in enumerate(lines):
+            if ':' in line and not line.startswith(' '):
+                key, value = line.split(':', 1)
+                if value.strip() in ('>', '|', '>-', '|-', '>+', '|+'):
+                    parts = []
+                    for nxt in lines[i + 1:]:
+                        if nxt.strip() and not nxt.startswith((' ', '\t')):
+                            break
+                        if nxt.strip():
+                            parts.append(nxt.strip())
+                    frontmatter[key.strip()] = ' '.join(parts)
 
     # Define allowed properties
     ALLOWED_PROPERTIES = {'name', 'description', 'license', 'allowed-tools', 'metadata'}
@@ -91,9 +104,13 @@ def validate_skill(skill_path):
 
     # Extract name for validation
     name = frontmatter.get('name', '')
+    if name is None:
+        name = ''
     if not isinstance(name, str):
         return False, f"Name must be a string, got {type(name).__name__}"
     name = name.strip()
+    if not name:
+        return False, "Missing 'name' in frontmatter"
     if name:
         # Check naming convention (hyphen-case: lowercase with hyphens)
         if not re.match(r'^[a-z0-9-]+$', name):
@@ -106,9 +123,13 @@ def validate_skill(skill_path):
 
     # Extract and validate description
     description = frontmatter.get('description', '')
+    if description is None:
+        description = ''
     if not isinstance(description, str):
         return False, f"Description must be a string, got {type(description).__name__}"
     description = description.strip()
+    if not description:
+        return False, "Missing 'description' in frontmatter"
     if description:
         # Check for angle brackets
         if '<' in description or '>' in description:
