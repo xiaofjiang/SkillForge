@@ -267,16 +267,16 @@ ITERATION_INPUT:
 
 | Round | Action if No Consensus |
 |-------|------------------------|
-| 1-3 | Normal iteration |
-| 4 | Require only critical fixes |
-| 5 | Flag for human review |
+| 1 | Normal review |
+| 2 | Confirm the fixes; only findings that could put wrong content in front of a reader block |
+| 3 or more | Only with Xiao's yes (verify-harness "Proportionality", round budget) |
 
-**At Round 5 without consensus:**
+**After Round 2 without consensus:**
 
 ```markdown
 ## Human Review Required
 
-The synthesis panel has not reached consensus after 5 iterations.
+The synthesis panel has not reached consensus after 2 rounds (the round budget).
 
 ### Remaining Disagreements:
 | Agent | Position | Rationale |
